@@ -20,18 +20,33 @@ mongoose
     return Recipe.deleteMany()
   })
   .then(() => {
-    Recipe.create({
-      title: "cake",
-      level:  "Easy Peasy",
-      ingredients: ["eggs", "milk", "oil", "whatever"],
-      cuisine: "french",
-      dishType: "snack",
-      duration: 60,
-      creator: "Auriane",
+    // Recipe.create({
+    //   title: "cake",
+    //   level:  "Easy Peasy",
+    //   ingredients: ["eggs", "milk", "oil", "whatever"],
+    //   cuisine: "french",
+    //   dishType: "snack",
+    //   duration: 60,
+    //   creator: "Auriane",
+    // })
+    //   .then(recipeFromDb => console.log(recipeFromDb.title))
+    //   .catch((err) => console.log("error ", err))
+    
+    // Recipe.insertMany(data)
+    //   .then(titlesFromDb => titlesFromDb.forEach(function(el) {console.log(el.title)}))
+    //   .catch(err => console.log(err))
+    
+    // Recipe.findOneAndUpdate({title: "Rigatoni alla Genovese"}, {duration: 100}, {"useFindAndModify": false, new:true})
+    //     .then(recipeFromDb => console.log(recipeFromDb))
+    //     .catch(err => console.log("I am here",err))
+    
+    Recipe.find({title: "Rigatoni alla Genovese"}) //TODO: fix document fetch from db
+      .then(test => console.log(test))
+      .catch(err => console.log(err))
+  
     })
-      .then(recipeFromDb => console.log(recipeFromDb.title))
-      .catch((err) => console.log("error ", err))
-  })
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
+
+  // {"useFindAndModify": false}
